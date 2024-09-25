@@ -1,0 +1,94 @@
+
+<!-- Y3N5bjwz -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="transparent" />
+<meta name="description" content="A multipurpose all-in-one bot, enhancing your experience with user-focused commands." />
+<meta property="og:title" content="heist" />
+<meta property="og:description" content="A multipurpose all-in-one bot, enhancing your experience with user-focused commands." />
+<meta property="og:url" content="https://heist.csyn.me/" />
+<meta property="og:site_name" content="heist.csyn.me" />
+<meta property="og:image" content="https://heist.csyn.me/footer.png" />
+<meta property="og:image:width" content="500" />
+<meta property="og:image:height" content="500" />
+<meta property="og:image:alt" content="heist" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="player" />
+<meta name="twitter:site" content="https://heist.csyn.me/" />
+<meta name="twitter:title" content="heist" />
+<meta name="twitter:description" content="A multipurpose all-in-one bot, enhancing your experience with user-focused commands." />
+<meta name="twitter:image:width" content="500" />
+<meta name="twitter:image:height" content="500" />
+<meta name="twitter:image:alt" content="heist" />
+<title>Bot Status</title>
+<style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(270deg, #000000, #36324b, #000000);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 1.2rem;
+    }
+
+    .status {
+      font-size: 1.5rem;
+      margin-top: 30px;
+    }
+
+    .status.online {
+      color: rgb(83, 216, 123);
+    }
+
+    .status.offline {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+<h1>Bot Status</h1>
+<p>status of Pulse</p>
+<div class="status" id="bot-status">Fetching status...</div>
+</div>
+<script>
+function getBotStatus() {
+  console.log('Fetching bot status...');
+  fetch('https://raw.githubusercontent.com/umjayson/pulsecountapi/refs/heads/main/status.json')
+    .then(response => {
+      console.log('Response:', response);
+      return response.json();
+    })
+    .then(data => {
+      console.log('Data:', data);
+      const statusElement = document.getElementById('bot-status');
+      statusElement.textContent = `Bot is ${data.status}`;
+      statusElement.classList.add(data.status);
+    })
+    .catch(error => console.error('Error fetching status:', error));
+}
+  
+    document.addEventListener('DOMContentLoaded', getBotStatus);
+  </script>
+<script src="/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="f292457cf3922ef05e97ad0a-|49" defer></script><script defer src="https://static.cloudflareinsights.com/beacon.min.js/vcd15cbe7772f49c399c6a5babf22c1241717689176015" integrity="sha512-ZpsOmlRQV6y907TI0dKBHq9Md29nnaEIPlkf84rnaERnq6zvWvPUqr2ft8M1aS28oN72PdrCzSjY4U6VaAw1EQ==" data-cf-beacon='{"rayId":"8c8e3c230cb4c459","version":"2024.8.0","r":1,"token":"d4b4638839f04fae9d6bbb5092254276","serverTiming":{"name":{"cfExtPri":true,"cfL4":true}}}' crossorigin="anonymous"></script>
+</body>
+</html>
